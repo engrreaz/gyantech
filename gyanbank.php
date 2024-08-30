@@ -16,7 +16,6 @@ if ($userlevel == 'Super Administrator' || $userlevel == 'Administrator') {
 
     ?>
 
-
     <style>
         ul,
         #myUL {

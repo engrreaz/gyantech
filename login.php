@@ -4,8 +4,8 @@ if ((isset($_SESSION["user"])) != '' ) {
     //   header("Location:index.php");
 }
 
-include_once 'auth/gpConfig.php';
-$authUrl = $gClient->createAuthUrl();
+// include_once 'auth/gpConfig.php';
+// $authUrl = $gClient->createAuthUrl();
 
 ?>
 <!DOCTYPE html>

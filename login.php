@@ -1,7 +1,9 @@
 <?php
 session_start();
-if ((isset($_SESSION["user"])) != '' ) {
-    //   header("Location:index.php");
+$usr = $_SESSION["user"];
+
+if ($usr != '' || $usr != NULL) {
+    header("Location:index.php");
 }
 
 // include_once 'auth/gpConfig.php';

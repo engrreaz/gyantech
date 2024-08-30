@@ -75,7 +75,7 @@ if ($result1x->num_rows > 0) {
                     <div id="countblock" hidden>0</div>
                     <?php if($userlevel == 'Administrator' || $userlevel == 'Super Administrator') { ?>
                     <button class="btn btn-primary" onclick="addnew();">Add a Gyan</button>
-                    <?php } ?>
+                    <?php }    ?>
                 </div>
             </div>
         </div>

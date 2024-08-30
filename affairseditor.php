@@ -310,9 +310,8 @@ if ($result1x->num_rows > 0) {
 </script>
 <script>
     function saveque(id, tail) {
-        var quetext = document.getElementById("quetext").value;
+        var quetext = '';
         var textbody = document.getElementById("textbody").value;
-
 
         var topic = document.getElementById("topic").value;
         var category = document.getElementById("category").value;
@@ -325,15 +324,15 @@ if ($result1x->num_rows > 0) {
 
         $.ajax({
             type: "POST",
-            url: "backend/saveaffair.php",
+            url: "backend/savecuraffair.php",
             data: infor,
             cache: false,
             beforeSend: function () {
-                $('#stinfo').html('<span class="mif-spinner4 mif-ani-pulse"></span>');
+                $('#stinfo').html('****************');
             },
             success: function (html) {
                 $("#stinfo").html(html);
-                document.getElementById("quetext").value = '';
+                // document.getElementById("quetext").value = '';
                 document.getElementById("textbody").value = '';
 
 
@@ -341,11 +340,11 @@ if ($result1x->num_rows > 0) {
                 document.getElementById("category").value = '';
                 document.getElementById("subcategory").value = '';
                 document.getElementById("level").value = '';
-                document.getElementById("newblock").style.display = 'none';
+                // document.getElementById("newblock").style.display = 'none';
                 if (id == 0) {
                     // window.location.href = 'queeditor.php';
                 } else {
-                    window.location.href = 'index.php';
+                    // window.location.href = 'index.php';
                 }
 
 

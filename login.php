@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (strlen(isset($_SESSION["user"])) > 0) {
-    //   header("Location:index.php");
+      header("Location:index.php");
 }
 
 include_once 'auth/gpConfig.php';
@@ -26,7 +26,7 @@ $authUrl = $gClient->createAuthUrl();
     <meta property="og:image" content="http://pratikborsadiya.in/blog/vali-admin/hero-social.png">
     <meta property="og:description"
         content="Vali is a responsive and free admin theme built with Bootstrap 4, SASS and PUG.js. It's fully customizable and modular.">
-    <title>Blank Page - Vali Admin</title>
+    <title>Gyantech - A Skill Developement Platform</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">

@@ -114,7 +114,7 @@ if ($result0->num_rows > 0) {
 
 
 
-                    <div class="col-md-6">
+                    <div class="col-md-6" hidden>
 
 
 
@@ -151,7 +151,7 @@ if ($result0->num_rows > 0) {
     </div>
 
 
-    <div class="row user">
+    <div class="row user" hidden>
         <div class="col-md-12">
             <div class="timeline-post">
                 <h5 class="mb-3">Topics & Categories</h5>
@@ -262,17 +262,17 @@ if ($result0->num_rows > 0) {
                         <div class="form-group">
                             <label for="exampleInputEmail1">Topic/Subject</label>
                             <input class="form-control" id="topicname" type="text" value="" aria-describedby="emailHelp"
-                                placeholder="" />
+                                placeholder="" disabled />
                             <small class="form-text text-muted" id="emailHelp"></small>
                         </div>
 
 
                         <div class="form-group d-flex">
                             <button class="btn btn-primary" onclick="prepareexam();">Prepare Exam Paper</button>
-                            
+
                         </div>
 
-<div id="stts" class="p-2"></div>
+                        <div id="stts" class="p-2"></div>
 
 
 

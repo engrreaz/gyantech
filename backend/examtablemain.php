@@ -3,7 +3,7 @@
         height: 40px;
         width: 40px;
         border-radius: 50%;
-        margin:auto;
+        margin: auto;
     }
 
     .grads-cont {
@@ -65,9 +65,14 @@
                 $dur_1 = $row5["dur_1"];
                 $response_1 = $row5["response_1"];
                 $correct_1 = $row5["correct_1"];
-                $t1 = 360 / $qcnt * ($correct_1);
-                $r1 = $t1 + 360 / $qcnt * ($response_1 - $correct_1);
-                $g1 = $r1 + 360 / $qcnt * ($qcnt - $response_1);
+                if ($qcnt > 0) {
+                    $t1 = 360 / $qcnt * ($correct_1);
+                    $r1 = $t1 + 360 / $qcnt * ($response_1 - $correct_1);
+                    $g1 = $r1 + 360 / $qcnt * ($qcnt - $response_1);
+                } else {
+                    $t1 = $r1 = $g1 = 0;
+                }
+
 
                 // $dur_2 = $row5["dur_2"];
                 // $response_2 = $row5["response_2"];
@@ -102,7 +107,7 @@
                                 </div>
                                 <div class="">
                                     <small>
-                                        <span class="text-primary">C=<?php echo $correct_1; ?>, </span> 
+                                        <span class="text-primary">C=<?php echo $correct_1; ?>, </span>
                                         <span class="text-danger">W=<?php echo $response_1 - $correct_1; ?>, </span>
                                         <span class="text-muted">N=<?php echo $qcnt - $response_1; ?></span>
 
@@ -114,7 +119,7 @@
                             <?php
                         } else {
                             ?>
-                            <button type="button" class="btn btn-primary" onclick="startexam(<?php echo $id; ?>, 1)" >
+                            <button type="button" class="btn btn-primary" onclick="startexam(<?php echo $id; ?>, 1)">
                                 Start Exam</button>
                             <?php
                         } ?>

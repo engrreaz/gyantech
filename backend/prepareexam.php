@@ -6,7 +6,7 @@ $examcode = $_POST['examcode'];
 $opts = '';
 
 $queset[] = '';
-$sql0 = "SELECT * from examtype where examcode='$examcode' and entryby = '$usr' LIMIT 1";
+$sql0 = "SELECT * from examtype where examcode='$examcode' and (entryby = '$usr' || entryby LIKE '%Admin%') LIMIT 1";
 $result1 = $conn->query($sql0);
 if ($result1->num_rows > 0) {
     while ($row0 = $result1->fetch_assoc()) {

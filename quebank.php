@@ -3,7 +3,7 @@ include 'header.php';
 include 'topbar.php';
 include 'navbar.php';
 
-if ($userlevel == 'Super Administrator') {
+if ($userlevel == 'Super Administrator' || $userlevel == 'Administrator') {
     // topic list
     $topics = array();
     $sql0 = "SELECT topic FROM topics group by topic order by topic";

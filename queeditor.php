@@ -3,7 +3,7 @@ include 'header.php';
 include 'topbar.php';
 include 'navbar.php';
 
-if ($userlevel == 'Super Administrator') {
+if ($userlevel == 'Super Administrator' || $userlevel == 'Administrator') {
 
     if (isset($_GET['id'])) {
         $id = $_GET['id'];

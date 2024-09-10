@@ -51,10 +51,15 @@ include 'navbar.php';
                                     $cnt = $row0mc["cnt"];
                                 }
                             }
+
+                            $r = rand(128, 255);
+                            $g = rand(128, 255);
+                            $b = rand(128, 255);
                             ?>
 
-                            <div class="col-md-2" onclick="goto(<?php echo $month; ?>, <?php echo $year; ?>);">
-                                <div class="timeline-post">
+                            <div class="col-md-2">
+                                onclick="goto(<?php echo $month; ?>, <?php echo $year; ?>);">
+                                <div class="timeline-post"  style="background:rgb(<?php echo $r; ?>, <?php echo $g; ?>, <?php echo $b; ?>);">
                                     <b><?php echo date('F', strtotime("2024-$month-01")); ?></b>
                                     <div style="font-size:10px;"><?php echo $cnt; ?> Facts</div>
                                 </div>

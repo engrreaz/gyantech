@@ -30,15 +30,18 @@ if ($result1->num_rows > 0) {
                 <a href="#"><img class="post-logo" src="source/post-logo.jpg" /></a>
                 <div class="content" style="flex-grow:1;">
                     <h5>
-                        <div class="float-right  btn p-1"><img src="source/<?php echo $sour; ?>.png" class="source-icon" />
-                        </div>
+                        <!-- <div class="float-right  btn p-1"><img src="source/<?php echo $sour; ?>.png" class="source-icon" /> -->
+                        <!-- </div> -->
                         <a href="#"><?php echo $title; ?></a>
                     </h5>
                     <div class="text-muted text-small d-block">
                         <small class="text-info">
                             <?php echo $ttx; ?> <i class="fa fa-circle-thin"></i>
                         </small>
-                        <small><?php timeago($times); ?></small>
+                        <small><?php
+                        echo date('d-m-Y', strtotime($times));
+                        // timeago($times); 
+                        ?></small>
                     </div>
                 </div>
             </div>

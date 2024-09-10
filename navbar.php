@@ -17,25 +17,25 @@
             <a class="app-menu__item" href="curaff.php"><i class="app-menu__icon fa fa-university"></i><span
                     class="app-menu__label">Current Affairs</span></a>
         </li>
-        <li hidden>
+        <li >
             <a class="app-menu__item" href="#"><i class="app-menu__icon fa fa-dashboard"></i><span
                     class="app-menu__label">Leaderboard</span></a>
         </li>
-        <li hidden>
+        <li >
             <a class="app-menu__item" href="#"><i class="app-menu__icon fa fa-dashboard"></i><span
                     class="app-menu__label">Acheievement</span></a>
         </li>
        
-        <li class="treeview" hidden>
+        <li class="treeview" >
             <a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span
                     class="app-menu__label">My Record Room</span><i class="treeview-indicator fa fa-angle-right"></i></a>
             <ul class="treeview-menu">
                 <li>
-                    <a class="treeview-item" href="#"><i class="icon fa fa-circle-o"></i>
+                    <a class="treeview-item" href="my-test.php"><i class="icon fa fa-circle-o"></i>
                         My Tests</a>
                 </li> 
                 <li>
-                    <a class="treeview-item" href="#"><i class="icon fa fa-circle-o"></i>
+                    <a class="treeview-item" href="test-create.php"><i class="icon fa fa-circle-o"></i>
                         New Test</a>
                 </li> 
                 <li>
@@ -69,11 +69,15 @@
                     <a class="treeview-item" href="affairsbank.php"><i class="icon fa fa-university"></i>
                        Affairs Bank</a>
                 </li> 
-                <li hidden>
+                <li>
+                    <a class="treeview-item" href="affairseditor.php"><i class="icon fa fa-university"></i>
+                       Affairs Editor</a>
+                </li> 
+                <li >
                     <a class="treeview-item" href="quebank.php"><i class="icon fa fa-circle-o"></i>
                        Quetions Bank</a>
                 </li> 
-                <li hidden>
+                <li >
                     <a class="treeview-item" href="queeditor.php"><i class="icon fa fa-circle-o"></i>
                        Quetions Editor</a>
                 </li> 

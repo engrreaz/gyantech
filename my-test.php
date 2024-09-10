@@ -323,7 +323,11 @@ if ($result0->num_rows > 0) {
         });
     }
 
-
+    localStorage.setItem("dura", 0);
+    localStorage.setItem("curno", 0);
+    localStorage.setItem("curresp", '');
+    document.cookie = "aaaa=";
+    document.cookie = "exstart=";
 </script>
 
 

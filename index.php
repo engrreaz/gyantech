@@ -73,9 +73,9 @@ if ($result1x->num_rows > 0) {
             <div class="ss">
                 <div class="tile-body text-right">
                     <div id="countblock" hidden>0</div>
-                    <?php if($userlevel == 'Administrator' || $userlevel == 'Super Administrator') { ?>
-                    <button class="btn btn-primary" onclick="addnew();">Add a Gyan</button>
-                    <?php }    ?>
+                    <?php if ($userlevel == 'Administrator' || $userlevel == 'Super Administrator') { ?>
+                        <button class="btn btn-primary" onclick="addnew();">Add a Gyan</button>
+                    <?php } ?>
                 </div>
             </div>
         </div>
@@ -276,7 +276,7 @@ if ($result1x->num_rows > 0) {
                                             <small class="text-info">
                                                 <?php echo $ttx; ?> <i class="fa fa-circle-thin"></i>
                                             </small>
-                                            <small><?php 
+                                            <small><?php
                                             echo date('d-m-Y', strtotime($times));
                                             // timeago($times); 
                                             ?></small>
@@ -290,7 +290,7 @@ if ($result1x->num_rows > 0) {
                                 </div>
                                 <ul class="post-utility text-small">
                                     <li class="likes" onclick="lll(<?php echo $id; ?>);" style="cursor:pointer;">
-                                        <div><i id="lll<?php echo $id; ?>" class="fa fa-fw fa-lg <?php echo $likeicon;?>"></i>
+                                        <div><i id="lll<?php echo $id; ?>" class="fa fa-fw fa-lg <?php echo $likeicon; ?>"></i>
                                             <span id="ll<?php echo $id; ?>"><?php echo $likes; ?></span> Likes
                                         </div>
                                     </li>
@@ -528,6 +528,12 @@ if ($result1x->num_rows > 0) {
             loadmore();
         }
     });
+
+    localStorage.setItem("dura", 0);
+    localStorage.setItem("curno", 0);
+    localStorage.setItem("curresp", '');
+    document.cookie = "aaaa=";
+    document.cookie = "exstart=";
 </script>
 
 <?php include 'footer.php';

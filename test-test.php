@@ -18,7 +18,7 @@ if (isset($_GET['tail'])) {
 
 $et = '';
 $qlist = '0';
-$sql5 = "SELECT * FROM examlist where username='$usr' and id='$id' LIMIT 1";
+$sql5 = "SELECT * FROM examlist where username='$usr' and id='$id' order by id LIMIT 1";
 $result6x = $conn->query($sql5);
 if ($result6x->num_rows > 0) {
     while ($row5 = $result6x->fetch_assoc()) {

@@ -100,7 +100,7 @@
                     <td class="text-center">
                         <?php if ($dur_1 > 0) {
                             ?>
-                            <div class="d-block">
+                            <div class="d-block"  onclick="viewexam(<?php echo $id; ?>, 1)">
                                 <div class="grads"
                                     style="background-image: conic-gradient(teal 0deg, teal <?php echo $t1; ?>deg, red <?php echo $t1; ?>deg,  red <?php echo $r1; ?>deg, lightgray <?php echo $r1; ?>deg, lightgray);">
                                     <div class="grads-cont"></div>

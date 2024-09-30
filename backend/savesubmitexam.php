@@ -23,6 +23,7 @@ $qct = $_POST['qcnt'];
 $qr = $_POST['qresp'];
 $qo = $_POST['qcorr'];
 $qw = $_POST['qwrong'];
+$ans = $_POST['allans'];
 $rate = $qo * 100 / $qct;
 
 $d_1 = $d_2 = $d_3 = 0;
@@ -45,8 +46,8 @@ if ($d_1 == 0) {
     $rno = 4;
 }
 
-$query331 = "INSERT INTO examsubmit (id, username, examid, examtype, respno, examtime, tduration, duration, examend, qtotal, qresp, qright, qwrong, rate) 
-                VALUES (NULL, '$usr', '$examid', '$etype', '0', '$etime', '$tdur', '$dur', '$cur', '$qct', '$qr', '$qo', '$qw', '$rate');";
+$query331 = "INSERT INTO examsubmit (id, username, examid, examtype, respno, examtime, tduration, duration, examend, qtotal, qresp, qright, qwrong, rate, allans) 
+                VALUES (NULL, '$usr', '$examid', '$etype', '0', '$etime', '$tdur', '$dur', '$cur', '$qct', '$qr', '$qo', '$qw', '$rate', '$ans');";
 // echo $query331;
 $conn->query($query331);
 

@@ -54,6 +54,12 @@ for ($h = 0; $h < strlen($str2); $h++) {
         $re++;
     }
 }
+
+$sql5 = "SELECT * FROM examsubmit where username='$usr' and examid='$id' order by id desc LIMIT 1";
+$result6xk = $conn->query($sql5);
+if ($result6xk->num_rows > 0) {
+    while ($row5 = $result6xk->fetch_assoc()) {
+        $allans = $row5["allans"];}}
 ?>
 
 
@@ -129,7 +135,7 @@ for ($h = 0; $h < strlen($str2); $h++) {
     }
 
     .form-check-label {
-        font-size: 20px;
+        font-size: 16px;
         padding: 2px 0 0 8px;
     }
 
@@ -184,12 +190,12 @@ for ($h = 0; $h < strlen($str2); $h++) {
                                 echo '0';
                             } ?>
                         </div>
-
+                            <div id="allans" hidden><?php echo $allans;?></div>
 
                         <script>
                             var dura = localStorage.getItem("dura");
                             var curno = localStorage.getItem("curno");
-                            var curresp = localStorage.getItem("curresp");
+                            var curresp = doucment.getElementById("allans").innerHTML;
 
 
                             var qc = <?php echo $qcnt; ?>;
@@ -229,10 +235,10 @@ for ($h = 0; $h < strlen($str2); $h++) {
 
                 <div id="exstart" hidden><?php echo $exstart; ?></div>
 
-                <div class="col-md-8">
+                <div class="col-md-12">
                     <div class="row ">
-                        <div class="col-md-12">
-                            <div id="btn0" style="display:none; ;" class="bg-primary text-white p-4">
+                        <div class="col-md-12" hidden>
+                            <div id="btn0" style="" class="bg-primary text-white p-4">
                                 <div class="row">
                                     <div class="col-md-12 d-block text-center ">
                                         <i class="fa fa-pencil fa-5x "></i>
@@ -273,7 +279,8 @@ for ($h = 0; $h < strlen($str2); $h++) {
                                 $opt4 = $row5['opt' . $d];
 
 
-                                $rex = substr($_COOKIE['aaaa'], $sl - 1, 1);
+                                // $rex = substr($_COOKIE['aaaa'], $sl - 1, 1);
+                                $rex = substr($allans, $sl - 1, 1);
                                 // echo $rex;
                                 if ($rex == 1) {
                                     // echo 'Y';
@@ -283,20 +290,24 @@ for ($h = 0; $h < strlen($str2); $h++) {
                                 $sel = 0;
                                 if ($rex == $a) {
                                     $sel = '1';
+                                    $rgb = 'primary';
                                 } else if ($rex == $b) {
                                     $sel = '2';
+                                    $rgb='primary';
                                 } else if ($rex == $c) {
                                     $sel = '3';
+                                    $rgb='primary';
                                 } else if ($rex == $d) {
                                     $sel = '4';
+                                    $rgb='primary';
                                 }
                                 ?>
-                                <div id="btn<?php echo $sl; ?>" style="display:none;">
+                                <div id="btn<?php echo $sl; ?>" style="" class="mb-3">
                                     <div class="row">
                                         <div class="col-md-12 d-flex  flex-grow">
-                                            <h3 class="text-primary pr-3"><?php echo $sl; ?>.</h3>
+                                            <h5 class="text-primary pr-2"><?php echo $sl; ?>.</h5>
                                             <div class="d-block">
-                                                <h3 class="text-primary"><?php echo $qtext; ?></h3>
+                                                <h5 class="text-primary"><?php echo $qtext; ?></h5>
                                                 <div class="text-muted text-small"><?php echo $stext; ?></div>
                                             </div>
                                         </div>
@@ -306,50 +317,94 @@ for ($h = 0; $h < strlen($str2); $h++) {
                                         <div class="col-md-12 d-flex">
                                             <div class="col-md-6 ">
                                                 <div class="form-check">
-                                                    <input type="radio" class="form-check-input" id="radio1<?php echo $sl; ?>"
-                                                        name="rad<?php echo $sl; ?>" value="<?php echo $a; ?>"
-                                                        onclick="respon(<?php echo $sl; ?>, <?php echo $a; ?>);" <?php if ($sel == 1)
-                                                                  echo ' checked'; ?>>
-                                                    <label class="form-check-label <?php if ($sel == 1)
-                                                        echo 'text-danger'; ?>"
+                                                    
+                                                                    <?php 
+                                                                        if($sel==1){
+                                                                            if($a ==1){
+                                                                                echo '<i class="fa fa fa-check-circle text-primary mt-2" style="font-size:20px;"></i>';
+                                                                            } else {
+                                                                                echo '<i class="fa fa fa-times-circle text-danger mt-2" style="font-size:20px;"></i>';
+                                                                            }
+                                                                        } else {
+                                                                            if($a ==1){
+                                                                                echo '<i class="fa fa fa-circle text-dark mt-2" style="font-size:20px;"></i>';
+                                                                            } else {
+                                                                                echo '<i class="fa fa fa-circle-o  mt-2" style="font-size:20px;"></i>';
+                                                                            }
+                                                                        }
+                                                                    ?>
+
+
+                                                    <label class="form-check-label text-<?php if($sel==1){if ($a == 1){echo 'primary';} else {echo 'danger';}} ?>" 
                                                         for="radio1<?php echo $sl; ?>"><?php echo $opt1; ?></label>
+                                               
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-check">
-                                                    <input type="radio" class="form-check-input" id="radio2<?php echo $sl; ?>"
-                                                        name="rad<?php echo $sl; ?>" value="<?php echo $b; ?>"
-                                                        onclick="respon(<?php echo $sl; ?>, <?php echo $b; ?>);" <?php if ($sel == 2)
-                                                                  echo ' checked'; ?>>
-                                                    <label class="form-check-label <?php if ($sel == 2)
-                                                        echo 'text-danger'; ?>"
+                                                <?php 
+                                                                        if($sel==2){
+                                                                            if($b ==1){
+                                                                                echo '<i class="fa fa fa-check-circle text-primary mt-2" style="font-size:20px;"></i>';
+                                                                            } else {
+                                                                                echo '<i class="fa fa fa-times-circle text-danger mt-2" style="font-size:20px;"></i>';
+                                                                            }
+                                                                        } else {
+                                                                            if($b ==1){
+                                                                                echo '<i class="fa fa fa-circle text-dark mt-2" style="font-size:20px;"></i>';
+                                                                            } else {
+                                                                                echo '<i class="fa fa fa-circle-o  mt-2" style="font-size:20px;"></i>';
+                                                                            }
+                                                                        }
+                                                                    ?>
+                                                    <label class="form-check-label text-<?php if($sel==2){if ($b == 1){echo 'primary';} else {echo 'danger';}} ?>"
                                                         for="radio2<?php echo $sl; ?>"><?php echo $opt2; ?></label>
                                                 </div>
                                             </div>
 
                                         </div>
                                     </div>
-                                    <div class="row mt-3">
+                                    <div class="row mt-1">
                                         <div class="col-md-12 d-flex">
                                             <div class="col-md-6">
                                                 <div class="form-check">
-                                                    <input type="radio" class="form-check-input" id="radio3<?php echo $sl; ?>"
-                                                        name="rad<?php echo $sl; ?>" value="<?php echo $c; ?>"
-                                                        onclick="respon(<?php echo $sl; ?>, <?php echo $c; ?>);" <?php if ($sel == 3)
-                                                                  echo ' checked'; ?>>
-                                                    <label class="form-check-label <?php if ($sel == 3)
-                                                        echo 'text-danger'; ?>"
+                                                <?php 
+                                                                        if($sel==3){
+                                                                            if($c ==1){
+                                                                                echo '<i class="fa fa fa-check-circle text-primary mt-2" style="font-size:20px;"></i>';
+                                                                            } else {
+                                                                                echo '<i class="fa fa fa-times-circle text-danger mt-2" style="font-size:20px;"></i>';
+                                                                            }
+                                                                        } else {
+                                                                            if($c ==1){
+                                                                                echo '<i class="fa fa fa-circle text-dark mt-2" style="font-size:20px;"></i>';
+                                                                            } else {
+                                                                                echo '<i class="fa fa fa-circle-o  mt-2" style="font-size:20px;"></i>';
+                                                                            }
+                                                                        }
+                                                                    ?>
+                                                    <label class="form-check-label text-<?php if($sel==3){if ($c == 1){echo 'primary';} else {echo 'danger';}} ?>"
                                                         for="radio3<?php echo $sl; ?>"><?php echo $opt3; ?></label>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-check">
-                                                    <input type="radio" class="form-check-input" id="radio4<?php echo $sl; ?>"
-                                                        name="rad<?php echo $sl; ?>" value="<?php echo $d; ?>"
-                                                        onclick="respon(<?php echo $sl; ?>, <?php echo $d; ?>);" <?php if ($sel == 4)
-                                                                  echo ' checked'; ?>>
-                                                    <label class="form-check-label <?php if ($sel == 4)
-                                                        echo 'text-danger'; ?>"
+                                                <?php 
+                                                                        if($sel==4){
+                                                                            if($d ==1){
+                                                                                echo '<i class="fa fa fa-check-circle text-primary mt-2" style="font-size:20px;"></i>';
+                                                                            } else {
+                                                                                echo '<i class="fa fa fa-times-circle text-danger mt-2" style="font-size:20px;"></i>';
+                                                                            }
+                                                                        } else {
+                                                                            if($d ==1){
+                                                                                echo '<i class="fa fa fa-circle text-dark mt-2" style="font-size:20px;"></i>';
+                                                                            } else {
+                                                                                echo '<i class="fa fa fa-circle-o  mt-2" style="font-size:20px;"></i>';
+                                                                            }
+                                                                        }
+                                                                    ?>
+                                                    <label class="form-check-label  text-<?php if($sel==4){if ($d == 1){echo 'primary';} else {echo 'danger';}} ?>"
                                                         for="radio4<?php echo $sl; ?>"><?php echo $opt4; ?></label>
                                                 </div>
                                             </div>
@@ -363,27 +418,6 @@ for ($h = 0; $h < strlen($str2); $h++) {
                                     <div class="row ">
                                         <div class="col-md-12 mt-3">
 
-                                            <?php if ($sl > 1) {
-                                                ?>
-                                                <div class="float-left col-md-2"><button class="btn btn-danger container-fluid"
-                                                        onclick="prev(<?php echo $sl; ?>)">Previous</button></div><?php
-                                            }
-
-                                            if ($sl < $qcnt) {
-                                                ?>
-                                                <div class=" float-right  col-md-2">
-                                                    <button class="btn btn-primary container-fluid "
-                                                        onclick="next(<?php echo $sl; ?>)">Next</button>
-                                                </div><?php
-                                            } else {
-                                                ?>
-                                                <div class=" float-right  col-md-3">
-                                                    <button class="btn btn-success container-fluid " onclick="submitpaper()">Submit
-                                                        Answer</button>
-                                                </div><?php
-                                            }
-                                            // echo $a . '/' . $b . '/' . $c . '//' . $d;
-                                            ?>
                                             <div id="resp<?php echo $sl; ?>" hidden> </div>
                                         </div>
                                     </div>
@@ -394,7 +428,7 @@ for ($h = 0; $h < strlen($str2); $h++) {
                         }
 
                         ?>
-                        <div id="btn<?php echo $sl; ?>" style="display:none;;">
+                        <div id="btn<?php echo $sl; ?>" style="">
                             <div class="row">
                                 <div class="col-md-12 d-block text-center">
 
@@ -419,7 +453,7 @@ for ($h = 0; $h < strlen($str2); $h++) {
                     </div>
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-4" hidden>
                     <div id="side-bar" style="display:none;">
                         <div class="row pl-3">
                             <div class="">
@@ -609,7 +643,7 @@ for ($h = 0; $h < strlen($str2); $h++) {
         var dur = tdur - parseInt(document.getElementById("curdur").innerHTML);
         var etm = document.getElementById("exstart").innerHTML;
         qc--;
-        var infor = "eid=<?php echo $id; ?>&et=<?php echo $et; ?>&dur=" + dur + "&tdur=" + tdur + "&qcnt=" + qc + "&qresp=" + res + "&qcorr=" + corr + "&qwrong=" + wrong + "&etm=" + etm + '&allans=' + ar;
+        var infor = "eid=<?php echo $id; ?>&et=<?php echo $et; ?>&dur=" + dur + "&tdur=" + tdur + "&qcnt=" + qc + "&qresp=" + res + "&qcorr=" + corr + "&qwrong=" + wrong + "&etm=" + etm;
         // alert(infor);
         $("#stinfo").html("");
 

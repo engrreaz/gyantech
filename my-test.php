@@ -194,6 +194,10 @@ if ($result0->num_rows > 0) {
     function startexam(id, tail) {
         window.location.href = 'test-test.php?id=' + id + "&tail=" + tail;
     }
+
+    function viewexam(id, tail) {
+        window.location.href = 'test-review.php?id=' + id + "&tail=" + tail;
+    }
 </script>
 <script>
     function topi(txt) {

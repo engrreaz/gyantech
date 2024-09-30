@@ -151,86 +151,127 @@ if ($result0->num_rows > 0) {
     </div>
 
 
-    <div class="row user" hidden>
+    <div class="row user">
         <div class="col-md-12">
             <div class="timeline-post">
                 <h5 class="mb-3">Topics & Categories</h5>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="label-control">Title for your exam</label>
+                            <input type="text" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="label-control">Description for this exam</label>
+                            <input type="text" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label class="label-control">Total Questions</label>
+                            <input type="text" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label class="label-control">Time (Min)</label>
+                            <input type="text" class="form-control" />
+                        </div>
+                    </div>
+             
+                </div>
+
                 <div class="row ">
                     <div class="col-md-6">
                         <ul id="myUL">
 
                             <?php
                             // echo var_dump($topics);
-                            foreach ($topics as $item) {
-                                ?>
-                                <li onclick="topi('<?php echo $item; ?>');"><span class="caret"><?php echo $item; ?></span>
-                                    <ul class="nested">
-                                        <?php
-                                        $sql0 = "SELECT category FROM topics where topic='$item'  and category !='' group by category order by category";
-                                        $result1 = $conn->query($sql0);
-                                        if ($result1->num_rows > 0) {
-                                            while ($row0 = $result1->fetch_assoc()) {
-                                                $cate = $row0["category"];
+                            $sql0 = "SELECT id, topic FROM topics group by topic order by topic";
+                            $result0 = $conn->query($sql0);
+                            if ($result0->num_rows > 0) {
+                                while ($row0 = $result0->fetch_assoc()) {
+                                    $item = $row0['topic'];
+                                    $id1 = $row0['id'];
 
-                                                ?>
+                                    ?>
+                                    <li style="padding:10px 0;" onclick="topi('<?php echo $item; ?>');"><span
+                                            class="caret"><?php echo $item; ?></span>
+                                        <span class="float-right">
+                                            <input type="text" class="form-control text-right" id="mainid<?php echo $id1; ?>" onchange="getlist(<?php echo $id1; ?>, 1);"
+                                                style="width:50px; height:30px;" />
+                                        </span>
+                                        <ul class="nested">
+                                            <?php
+                                            $sql0 = "SELECT category,id FROM topics where topic='$item'  and category !='' group by category order by category";
+                                            $result1 = $conn->query($sql0);
+                                            if ($result1->num_rows > 0) {
+                                                while ($row0 = $result1->fetch_assoc()) {
+                                                    $cate = $row0["category"];
+                                                    $id2 = $row0["id"];
 
-                                                <li onclick="cat('<?php echo $item; ?>','<?php echo $cate; ?>');">
-                                                    <span class="caret">
-                                                        <?php echo $cate; ?>
-                                                    </span>
+                                                    ?>
 
-                                                    <ul class="nested">
+                                                    <li style="padding:10px 0;"
+                                                        onclick="cat('<?php echo $item; ?>','<?php echo $cate; ?>');">
+                                                        <span class="caret">
+                                                            <?php echo $cate; ?>
+                                                        </span>
+                                                        <span class="float-right">
+                                                            <input type="text" class="form-control text-right"  onchange="getlist(<?php echo $id2; ?>, 2);"
+                                                                id="mainid<?php echo $id2; ?>" style="width:50px; height:30px;" />
+                                                        </span>
 
-                                                        <?php
-                                                        $sql0 = "SELECT subcategory FROM topics where topic='$item' and category='$cate' and   subcategory !='' group by subcategory order by subcategory";
-                                                        $result2 = $conn->query($sql0);
-                                                        if ($result2->num_rows > 0) {
-                                                            while ($row0 = $result2->fetch_assoc()) {
-                                                                $subcate = $row0["subcategory"];
-                                                                ?>
 
-                                                                <li
-                                                                    onclick="subcat('<?php echo $item; ?>','<?php echo $cate; ?>','<?php echo $subcate; ?>');">
-                                                                    <span class="caret"><?php echo $subcate; ?></span>
-                                                                    <?php
+                                                        <ul class="nested">
+
+                                                            <?php
+                                                            $sql0 = "SELECT subcategory, id FROM topics where topic='$item' and category='$cate' and   subcategory !='' group by subcategory order by subcategory";
+                                                            $result2 = $conn->query($sql0);
+                                                            if ($result2->num_rows > 0) {
+                                                                while ($row0 = $result2->fetch_assoc()) {
+                                                                    $subcate = $row0["subcategory"];
+                                                                    $id3 = $row0["id"];
+                                                                    ?>
+
+                                                                    <li style="padding:10px 0;"
+                                                                        onclick="subcat('<?php echo $item; ?>','<?php echo $cate; ?>','<?php echo $subcate; ?>');">
+                                                                        <span class="caret"><?php echo $subcate; ?></span>
+                                                                        <span class="float-right">
+                                                                            <input type="text" class="form-control text-right"  onchange="getlist(<?php echo $id3; ?>, 3);"
+                                                                                id="mainid<?php echo $id3; ?>"
+                                                                                style="width:50px; height:30px;" />
+                                                                        </span>
+                                                                        <?php
+                                                                }
                                                             }
-                                                        }
-                                                        ?>
-                                                    </ul>
-                                                </li>
-                                                <?php
+                                                            ?>
+                                                        </ul>
+                                                    </li>
+                                                    <?php
+                                                }
                                             }
-                                        }
-                                        ?>
-                                    </ul>
-                                </li>
-                                <?php
+                                            ?>
+                                        </ul>
+                                    </li>
+                                    <?php
+
+                                }
                             }
+
                             ?>
                         </ul>
                     </div>
                     <div class="col-md-6">
 
 
-
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Topic/Subject</label>
-                            <input class="form-control" id="topicname" type="text" value="" aria-describedby="emailHelp"
-                                placeholder="" />
-                            <small class="form-text text-muted" id="emailHelp"></small>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Category</label>
-                            <input class="form-control" id="catname" type="text" value="" aria-describedby="emailHelp"
-                                placeholder="" />
-                            <small class="form-text text-muted" id="emailHelp"></small>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Sub Category</label>
-                            <input class="form-control" id="subcatname" type="text" value=""
-                                aria-describedby="emailHelp" placeholder="" />
-                            <small class="form-text text-muted" id="emailHelp"></small>
-                        </div>
+                            <div id="strcnt" class="" style>0</div>
+                       
                         <div class="form-group d-flex">
                             <button class="btn btn-primary" onclick="savecat();">Submit Category</button>
                             <div id="subcatcat" class="p-2"></div>
